@@ -6,22 +6,43 @@ import Axios from 'axios';
 
 class Table extends Component{
 
+    state = {
+        task : [],
+    };
+
+    url = "https://lltodoapi.000webhostapp.com/get/";
+
+    componentDidMount(){
+
+        Axios.get(this.url)
+        .then( response => {
+            const task = response.data.response;
+            //console.log(task);
+            this.setState( { task } )
+        })
+
+    }
+
     render(){
         return(
-            <table className="table table-dark">
-                <thead> 
-                    <tr>
-                        <th scope="col"> Title </th>
-                        <th scope="col"> Project name </th>
-                        <th scope="col"> Comment </th>
-                        <th scope="col"> Date </th>
-                        <th scope="col">  </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <TableContent />
-                </tbody>
-            </table>
+            <div className="table-responsive">
+                <table className="table table-md table-dark align-midle">
+                    <thead> 
+                        <tr>
+                            <th scope="col"> Title task</th>
+                            <th scope="col"> Project </th> 
+                            <th scope="col"> Comment </th>
+                            <th scope="col"> Date </th>
+                            <th scope="col">  </th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-dark">
+                        <TableContent 
+                            info = { this.state }
+                        />
+                    </tbody>
+                </table>
+            </div>
         );}
 }
 
