@@ -9,10 +9,8 @@ import './App.css';
 class App extends Component {
   render(){
     return (
-      <div className="container">
-        <h1 className="text-center">
-          Todo list 
-        </h1>
+      <div className="container-md">
+        <h1 className="text-center"> Todo list </h1>
         <Table/>
       </div >
     );
