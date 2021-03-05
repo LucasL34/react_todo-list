@@ -33,7 +33,11 @@ class Table extends Component{
                             <th scope="col"> Project </th> 
                             <th scope="col"> Comment </th>
                             <th scope="col"> Date </th>
-                            <th scope="col">  </th>
+                            <th scope="col">
+                                <form onSubmit="" className="form-inline justify-content-center align-items-center">
+                                    <button id="new" className="btn btn-warning"> New </button>
+                                </form>
+                            </th>
                         </tr>
                     </thead>
                     <tbody className="text-dark">
