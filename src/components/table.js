@@ -1,8 +1,11 @@
+import Axios from 'axios';
+import { 
+    BrowserRouter as Router, 
+    Link
+  } from "react-router-dom";
+
 import React, { Component } from 'react';
 import TableContent from './tableContent.js';
-
-import Axios from 'axios';
-
 
 class Table extends Component{
 
@@ -25,7 +28,7 @@ class Table extends Component{
 
     render(){
         return(
-            <div className="table-responsive">
+            <div className="table-responsive container-md">
                 <table className="table table-md table-dark align-midle">
                     <thead> 
                         <tr>
@@ -35,7 +38,11 @@ class Table extends Component{
                             <th scope="col"> Date </th>
                             <th scope="col">
                                 <form onSubmit="" className="form-inline justify-content-center align-items-center">
-                                    <button id="new" className="btn btn-warning"> New </button>
+                                    <Router>
+                                        <Link to="/login" className="btn btn-warning">
+                                            New 
+                                        </Link>
+                                    </Router>
                                 </form>
                             </th>
                         </tr>
