@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Switch
+} from "react-router-dom";
 
-import Table from './components/table';
+import Form from './components/form';
+import Home from './components/home';
 
-import './bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
 class App extends Component {
   render(){
     return (
-      <div className="container-md">
-        <h1 className="text-center"> Todo list </h1>
-        <Table/>
-      </div >
+      <Router>
+          <Switch>
+            <Route path="/user/">
+              <Form />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+      </Router>
     );
   };
 }
