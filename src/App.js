@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { 
   BrowserRouter as Router, 
   Route, 
@@ -12,8 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
-class App extends Component {
-  render(){
+function App() {
+  
     return (
       <Router>
           <Switch>
@@ -26,7 +26,6 @@ class App extends Component {
           </Switch>
       </Router>
     );
-  };
-}
+  }
 
 export default App;
