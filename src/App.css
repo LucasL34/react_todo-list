@@ -18,6 +18,6 @@
   flex-direction: row-reverse;
 }
 
-#login:hover{
+a#login:hover{
   color: #ffc107; /* bootstrap warning btn */
 }
