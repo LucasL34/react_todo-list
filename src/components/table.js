@@ -10,7 +10,7 @@ import TableContent from './tableContent.js';
 
 class Table extends Component{
 
-    url = "http://l34todolist.atwebpages.com/get/";
+    url = "http://l34todolist.atwebpages.com/get/index.php";
     
     state = {
         task : [],
