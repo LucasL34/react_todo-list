@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+//import Axios from 'axios';
 
 class TableContent extends Component{
 
@@ -7,7 +7,7 @@ class TableContent extends Component{
 
     task_done = e => {
         e.preventDefault();
-
+        /*
         let $btn = e.target[0]; // select first child 
 
         let id = $btn.getAttribute("data-id");
@@ -17,11 +17,13 @@ class TableContent extends Component{
         Axios.delete(detele_url)
         .then( response =>{
             console.log(response.data);
-        } )
+        } )*/
     }
 
     innerTasks = () => {
         var task = this.props.info.task;
+
+        if( !task || task.length === 0) return;
 
         return (
             <React.Fragment>{
