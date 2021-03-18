@@ -17,7 +17,10 @@ class Table extends Component{
     };
 
     componentDidMount(){
-        fetch( this.url , { method: "GET" } )
+        Axios({
+            method: 'GET',
+            url: this.url
+          })
         .then( res => res.json() )
         .then( response => {
             const task = response.data.response;
