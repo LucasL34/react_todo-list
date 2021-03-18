@@ -1,29 +1,30 @@
+import React, { Component } from 'react';
 import Axios from 'axios';
 import { 
     BrowserRouter as Router, 
     Link
   } from "react-router-dom";
 
-import React, { Component } from 'react';
+
 import TableContent from './tableContent.js';
 
 class Table extends Component{
 
+    url = "http://l34todolist.atwebpages.com/get/";
+    
     state = {
         task : [],
     };
 
-    url = "https://lltodoapi.000webhostapp.com/get/";
-
     componentDidMount(){
-
-        Axios.get(this.url)
+        Axios.get( this.url )
+        .then( res => res.json() )
         .then( response => {
             const task = response.data.response;
-            //console.log(task);
+            console.log(task);
             this.setState( { task } )
         })
-
+        .catch(err=> console.error(err))
     }
 
     render(){
@@ -37,7 +38,7 @@ class Table extends Component{
                             <th scope="col"> Comment </th>
                             <th scope="col"> Date </th>
                             <th scope="col">
-                                <form onSubmit="" className="form-inline justify-content-center align-items-center">
+                                <form onSubmit={ e => e.preventDefault() } className="form-inline justify-content-center align-items-center">
                                     <Router>
                                         <Link to="/login" className="btn btn-warning">
                                             New 
@@ -54,7 +55,8 @@ class Table extends Component{
                     </tbody>
                 </table>
             </div>
-        );}
+        );
+    }
 }
 
 export default Table;
