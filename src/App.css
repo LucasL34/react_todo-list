@@ -1,15 +1,11 @@
 #root{
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: calc(5px + 2vmin);
-}
-
-#title::after{
-  content: " - ";
 }
 
 .navbar{
@@ -18,6 +14,24 @@
   flex-direction: row-reverse;
 }
 
-a#login:hover{
+#btnNav:hover{
   color: #ffc107; /* bootstrap warning btn */
+  cursor: pointer;
+}
+
+#textarea_comment{
+  resize: none;
+}
+
+#ulExample > li{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ulExample > li > figure{
+  width: 15px;
+  height: 15px;
+  margin: 0 .5rem;
+  opacity: .75;
 }
