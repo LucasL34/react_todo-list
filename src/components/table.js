@@ -1,65 +1,63 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
-import { 
-    BrowserRouter as Router, 
-    Link
-  } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
 
+import TableContent from './tableContent.js'
 
-import TableContent from './tableContent.js';
+function Table(){
 
-class Table extends Component{
+    const [ tasks, setTasks ] = useState([]),
+        [ deleted, deleteThis ] = useState(false)
 
-    url = "http://l34todolist.atwebpages.com/get/index.php";
-    
-    state = {
-        task : [],
-    };
+    useEffect( function(){
 
-    componentDidMount(){
-        Axios({
-            method: 'GET',
-            url: this.url
-          })
-        .then( res => res.json() )
-        .then( response => {
-            const task = response.data.response;
-            console.log(task);
-            this.setState( { task } )
-        })
-        .catch(err=> console.error(err))
+        getTask()
+
+    }, [ deleted ]) 
+
+    const getTask = () => {
+
+        const localStorageData = JSON.parse(localStorage.getItem("ltodolist-data"))
+
+        !localStorageData ?
+            setTasks(false)
+        :
+            setTasks(localStorageData.task.reverse()) // order | newest first 
     }
 
-    render(){
-        return(
-            <div className="table-responsive container-md">
-                <table className="table table-md table-dark align-midle">
-                    <thead> 
-                        <tr>
-                            <th scope="col"> Title task</th>
-                            <th scope="col"> Project </th> 
-                            <th scope="col"> Comment </th>
-                            <th scope="col"> Date </th>
-                            <th scope="col">
-                                <form onSubmit={ e => e.preventDefault() } className="form-inline justify-content-center align-items-center">
-                                    <Router>
-                                        <Link to="/login" className="btn btn-warning">
-                                            New 
-                                        </Link>
-                                    </Router>
-                                </form>
-                            </th>
-                        </tr>
-                    </thead>
+    const renderTable = () => {
+
+        return <>
+            <table className="table table-dark align-midle mt-4">
+                <thead> 
+                    <tr>
+                        <th scope="col"> Task title </th>
+                        <th scope="col"> Project </th> 
+                        <th scope="col"> Comment </th>
+                        <th scope="col">
+                            <form className="form-inline justify-content-center align-items-center" onSubmit={ e => e.preventDefault() }>
+                                <Link to="/newTask" className="btn btn-warning">
+                                    New 
+                                </Link>
+                            </form>
+                        </th>
+                    </tr>
+                </thead>
                     <tbody className="text-dark">
                         <TableContent 
-                            info = { this.state }
+                            info = { tasks }
+                            deleteSignal = { deleteThis }
                         />
                     </tbody>
-                </table>
-            </div>
-        );
+            </table>
+        </>
     }
+
+
+    return <>
+        <div className="table-responsive-xl container-lg px-0">
+            { renderTable() }
+        </div>
+    </>
 }
 
-export default Table;
+export default Table
