@@ -1,17 +1,27 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'
 
-class Nav extends Component{
-    render(){
-        return(
-            <nav className="navbar navbar-dark bg-dark mb-2">
-                <Link to="/user/" className="navbar-brand" id="login">
-                    Log in 
+function Nav(){
+
+    const location = useLocation()
+
+    const slug = location.pathname // location 
+    
+    const handleRoute = () => { return slug === "/" ? "/user/" : "/" }
+
+    const exportData = () => {}
+
+
+    return <>
+        <nav className="navbar navbar-dark bg-dark mb-3">
+            {slug !== "/" ?
+                <Link to={ handleRoute() } className="navbar-brand" id="btnNav" >
+                    { "Back to home" }
                 </Link>
-
-            </nav>
-        );
-    }
+            :
+                <span className="navbar-brand" id="btnNav" onClick={ exportData } title="Export tasks in file json"> Export </span>
+            }
+        </nav>
+    </>
 }
 
-export default Nav;
+export default Nav
