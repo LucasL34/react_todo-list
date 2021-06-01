@@ -45,7 +45,13 @@ function Table(){
                     <tbody className="text-dark">
                         <TableContent 
                             info = { tasks }
-                            deleteSignal = { deleteThis }
+                            deleteTask = {
+                                {
+                                    function: deleteThis ,
+                                    value: deleted
+                                }
+                                
+                            }
                         />
                     </tbody>
             </table>

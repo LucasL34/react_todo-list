@@ -21,7 +21,7 @@ function TableContent(props){
         :
             <Row 
                 data = { task }
-                deleteFunction = { props.deleteSignal }
+                deleteTask = { props.deleteTask }
             />
     }</>
 }

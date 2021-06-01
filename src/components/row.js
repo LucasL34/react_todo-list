@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 function Row(props){
 
-    const { data, deleteFunction, exampleTask = true } = props
+    const { data, deleteTask, exampleTask = true } = props
 
     var taskDone = e => {
 
@@ -19,12 +19,11 @@ function Row(props){
 
             index = localData.task.indexOf(dataToFind)
 
-
-        localData.task.splice(index, 1) // remove elemento from array 
+        localData.task.splice(index, 1)  // remove elemento from array 
 
         localStorage.setItem("ltodolist-data", JSON.stringify(localData)) // update data 
 
-        deleteFunction(true) // re render table 
+        deleteTask.function( !deleteTask.value ) // re render table 
     }
 
     const transformElementToObject = function($e){
@@ -35,21 +34,20 @@ function Row(props){
 
             priority = $e.classList[0].split("-")[1] // "table-danger" -> "danger" 
 
-        
         var template = [ // template 
-            "title",
             "name",
+            "title",
             "comment"
         ], obj = {}
+
+        obj["id"] = Number(id)
 
         for (let i = 0; i < l; i++ ) {
 
             obj[template[i]] = $e.children[i].outerText
-
         }
 
         obj["priority"] = priority
-        obj["id"] = Number(id)
 
         return obj 
     }
@@ -60,7 +58,7 @@ function Row(props){
             const { id, title, name, comment, priority } = tasks 
 
             return(
-                <tr key={ id } className={ `table-${ priority }`} >
+                <tr key={ id } className={ `table-${ priority ? priority : "secondary" }`} >
                     <th scope="row"> { title } </th>
                     <td> { name } </td>
                     <td> { comment } </td>
