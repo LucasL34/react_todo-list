@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import Nav from '../components/nav'
+import Footer from '../components/footer'
 import Table from '../components/table'
 
 function Home(){
@@ -20,14 +20,13 @@ function Home(){
     }, [])
 
     return <>
-        <Nav />
-            <h1 className="text-center my-4">
-                Todo list
-            </h1>
-            <div className="container-fluid bg-dark my-3 text-white">
-                <ul id="ulExample" className="container d-flex align-items-center justify-content-around flex-wrap mt-3">
+        <h1 className="text-center my-4">
+            Todo list
+        </h1>
+            <div className="container-fluid mb-3 text-dark">
+                <ul id="ulExample" className="container d-flex align-items-center justify-content-around flex-wrap">
                     <li>
-                        <figure className="bg-light"></figure>
+                        <figure className="bg-secondary"></figure>
                         None 
                     </li>
                     <li>
@@ -45,6 +44,7 @@ function Home(){
                 </ul>
             </div>
         <Table/>
+        <Footer />
     </>
 }
 
