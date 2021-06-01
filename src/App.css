@@ -12,6 +12,9 @@
 .table-responsive-xl{
   min-height: 70vh;
 }
+form.container-lg{
+  max-width: 450px;
+}
 .navbar{
   width: 100%;
   display: flex;

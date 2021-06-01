@@ -84,7 +84,7 @@ function newTask(){
     const newTaskForm = () => {
 
         return <>
-            <form onSubmit={ sendTask } >
+            <form onSubmit={ sendTask } className="container-lg m-auto">
                 <Input 
                     data = {{
                         type: "text",
@@ -116,11 +116,9 @@ function newTask(){
 
     return <>
         <Nav />
-        <div className="container mt-5">
+        <div className="container-fluid my-5">
             <h1 className="text-center"> New task </h1>
-            <div className="col-6 m-auto px-5">
                 { newTaskForm() } 
-            </div>
         </div>
         <Footer />
     </>
