@@ -3,6 +3,7 @@ import React from 'react'
 import Nav from '../components/nav'
 import Input from '../components/input'
 import Button from '../components/button'
+import Footer from "../components/footer"
 
 import json_project from '../exampleNames' 
 
@@ -13,10 +14,10 @@ function newTask(){
 
         return <>
              <div className="my-3">
-                <label className="form-label" htmlFor="textarea_comment">
+                <label className="form-label" htmlFor="textareaComment">
                     Comment:
                 </label>
-                <textarea className="form-control" id="textarea_comment" placeholder="Short comment (optional)" />
+                <textarea className="form-control" id="textareaComment" placeholder="Short comment (optional)" />
             </div>
         </>
     }
@@ -25,10 +26,10 @@ function newTask(){
 
         return <>
             <div className="input-group my-3">
-                <label className="input-group-text" htmlFor="select_priority">
+                <label className="input-group-text" htmlFor="selectPriority">
                     Priority:
                 </label>
-                <select className="form-select form-control" id="select_priority">
+                <select className="form-select form-control" id="selectPriority">
                     { setOptionLabel() }
                 </select>
             </div>
@@ -57,10 +58,10 @@ function newTask(){
 
         e.preventDefault()
 
-        const title = document.querySelector("#new_task_title").value, 
-            name = document.querySelector("#new_task_name").value, 
-            comment = document.querySelector("#textarea_comment").value, 
-            priority = document.querySelector("#select_priority").value 
+        const title = document.querySelector("#newTaskTitle").value, 
+            name = document.querySelector("#newTaskName").value, 
+            comment = document.querySelector("#textareaComment").value, 
+            priority = document.querySelector("#selectPriority").value 
 
         const id = Date.now()
 
@@ -88,14 +89,14 @@ function newTask(){
                     data = {{
                         type: "text",
                         label: "Task title",
-                        id: "new_task_title",
+                        id: "newTaskTitle",
                     }}
                 />
                 <Input 
                     data = {{
                         type: "text",
                         label: "Project name",
-                        id: "new_task_name",
+                        id: "newTaskName",
                         examplePlaceholder: json_project.project 
                     }}
                 />
@@ -106,7 +107,7 @@ function newTask(){
                     data = {{
                         cssClass: "btn btn-dark",
                         text: "Save task :D",
-                        id: "new_task_btn"
+                        id: "newTaskBtn"
                     }}
                 />
             </form>
@@ -121,6 +122,7 @@ function newTask(){
                 { newTaskForm() } 
             </div>
         </div>
+        <Footer />
     </>
 
 }

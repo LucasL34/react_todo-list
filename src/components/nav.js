@@ -8,18 +8,13 @@ function Nav(){
     
     const handleRoute = () => { return slug === "/" ? "/user/" : "/" }
 
-    const exportData = () => {}
-
 
     return <>
-        <nav className="navbar navbar-dark bg-dark mb-3">
-            {slug !== "/" ?
-                <Link to={ handleRoute() } className="navbar-brand" id="btnNav" >
-                    { "Back to home" }
-                </Link>
-            :
-                <span className="navbar-brand" id="btnNav" onClick={ exportData } title="Export tasks in file json"> Export </span>
-            }
+        <nav className="navbar navbar-dark bg-dark">
+            { /* slug !== "/" ? component : other component */ }
+            <Link to={ handleRoute() } className="navbar-brand todolist-btn" >
+                { "Back to home" }
+            </Link>
         </nav>
     </>
 }

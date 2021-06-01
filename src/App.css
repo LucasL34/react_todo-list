@@ -4,22 +4,27 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   font-size: calc(5px + 2vmin);
 }
 
+.table-responsive-xl{
+  min-height: 70vh;
+}
 .navbar{
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
 }
 
-#btnNav:hover{
-  color: #ffc107; /* bootstrap warning btn */
+.todolist-btn:hover, .todolist-btn svg:hover{
+  color: #ffc107; /* bootstrap's warning color */
+  fill: #ffc107; /* set color icon react-icons */
   cursor: pointer;
 }
 
-#textarea_comment{
+#textareaComment{
   resize: none;
 }
 
@@ -33,5 +38,5 @@
   width: 15px;
   height: 15px;
   margin: 0 .5rem;
-  opacity: .75;
+  opacity: .5;
 }
