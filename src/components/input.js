@@ -1,9 +1,7 @@
 
 function Input(props){
 
-    // set default value of props
-    const { type, label, id, examplePlaceholder = false } =  props.data 
-
+    const { type, label, id, examplePlaceholder = false } =  props.data
 
     const randomName = () => { 
 
@@ -41,4 +39,4 @@ function Input(props){
     </>
 }
 
-export default Input 
+export default Input
