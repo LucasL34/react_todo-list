@@ -5,6 +5,7 @@ import Home from "./views/home";
 import newTask from "./views/newTask";
 
 import "./index.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   return (
